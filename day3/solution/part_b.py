@@ -16,12 +16,11 @@ def is_tree_hit(horizontal_data):
 def get_hits(input_data, slope):
     area = input_data.split("\n")[slope[1]:]
     hitting_points = [((point + 1) * slope[0]) % len(area[0]) for point in range(0, len(area), 1)]
-    area = list(zip(area[::slope[1]], hitting_points))
-    return len([hit for hit in map(is_tree_hit, area) if hit])
+    hit_area = zip(area[::slope[1]], hitting_points)
+    return len([hit for hit in map(is_tree_hit, hit_area) if hit])
 
 
 def return_solution(input_data, slopes):
-    map(get_hits, (input_data,) * len(slopes), slopes)
     return reduce((lambda x, y: x * y), map(get_hits, (input_data,) * len(slopes), slopes))
 
 
