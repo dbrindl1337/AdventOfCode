@@ -63,14 +63,14 @@ def is_passport_valid(passport):
     return True
 
 
-def count_valid_passwords(input_data):
+def count_valid_passports(input_data):
     passports = input_data.split("\n\n")
     list_of_passports = map(to_passport_map, passports)
     return len(list(filter(is_passport_valid, list_of_passports)))
 
 
 def return_solution(input_data):
-    return count_valid_passwords(input_data)
+    return count_valid_passports(input_data)
 
 
 def main():
