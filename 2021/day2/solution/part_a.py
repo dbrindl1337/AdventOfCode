@@ -19,7 +19,7 @@ move = {"forward": forward, "down": down, "up": up}
 
 def return_solution(puzzle):
     pos = [0, 0]
-    [move[direction[0]](pos, int(direction[1])) for direction in [a.split(" ") for a in puzzle.split("\n")]]
+    [move[direction[0]](pos, int(direction[1])) for direction in [a.split() for a in puzzle.split("\n")]]
 
     return pos[0] * pos[1]
 
