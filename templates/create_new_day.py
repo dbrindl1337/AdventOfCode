@@ -7,7 +7,7 @@ import os
 now = datetime.datetime.now()
 year = now.year
 
-get_solution = "puzzle.input_data"
+get_solution = "puzzle"
 get_solution_split_by_lines = f"{get_solution}.split(\"\\n\")"
 get_solution_split_by_lines_into_tuples = f"[i.split() for i in {get_solution_split_by_lines}]"
 
@@ -16,9 +16,7 @@ unix_style_newline = "\n"
 
 # manually override these:
 day = now.day
-preprocess_solution = get_solution_split_by_lines_into_tuples
-
-preprocess_solution_str = f"return_solution({preprocess_solution})"
+preprocess_solution_str = get_solution
 
 src = 'day_template'
 dest = f'../{year}/day{day}'
@@ -33,9 +31,13 @@ def return_solution(puzzle):
     pass
 
 
+def split_input(puzzle):
+    return {prepocess_solution}
+
+
 def main():
     puzzle = Puzzle(year={year}, day={day})
-    submit({prepocess_solution}, part="{part}", day={day}, year={year})
+    submit(return_solution(split_input(puzzle.input_data)), part="{part}", day={day}, year={year})
 
 
 if __name__ == '__main__':
@@ -53,11 +55,11 @@ input_b = input_a  # replace me
 
 
 def test_correct_example_solution_part_a():
-    assert a.return_solution(input_a) == 0  # replace me
+    assert a.return_solution(a.split_input(input_a)) == 0  # replace me
 
 
 def test_correct_example_solution_part_b():
-    assert b.return_solution(input_b) == 0  # replace me
+    assert b.return_solution(b.split_input(input_b)) == 0  # replace me
 """
 
 
