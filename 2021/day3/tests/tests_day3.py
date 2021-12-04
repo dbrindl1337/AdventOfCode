@@ -1,5 +1,6 @@
 from ..solution import part_a as a
 from ..solution import part_b as b
+from ..solution import golf as t
 
 input_a = """00100
 11110
