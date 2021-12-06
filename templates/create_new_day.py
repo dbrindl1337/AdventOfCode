@@ -16,7 +16,7 @@ unix_style_newline = "\n"
 
 # manually override these:
 day = now.day
-preprocess_solution_str = get_solution
+preprocess_solution_str = get_solution_split_by_lines
 
 src = 'day_template'
 dest = f'../{year}/day{day}'
