@@ -7,7 +7,7 @@ part = "b"
 
 
 def find_encryption_weakness(number_list, attack_number):
-    number_list.remove(attack_number)
+    number_list.remove_or_empty(attack_number)
     for a in range(0, len(number_list)):
         sum = number_list[a]
         for b in range(a + 1, len(number_list)):
