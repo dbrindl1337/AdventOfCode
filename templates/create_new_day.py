@@ -15,7 +15,7 @@ windows_style_newline = "\r\n"
 unix_style_newline = "\n"
 
 # manually override these:
-day = now.day
+day = 14
 preprocess_solution_str = get_solution_split_by_lines
 
 src = 'day_template'
@@ -27,12 +27,13 @@ def get_solution_template(part, prepocess_solution):
 from aocd import submit
 
 
-def return_solution(puzzle):
+def return_solution(lines):
     pass
 
 
 def split_input(puzzle):
-    return {prepocess_solution}
+    lines = {prepocess_solution}
+    return lines
 
 
 def main():
