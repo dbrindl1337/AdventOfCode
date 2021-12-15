@@ -5,16 +5,37 @@ import numpy as np
 
 
 def return_solution(puzzle):
-    puzzle += 1
+    flashes = 0
 
+    for steps in range(0, 100):
+        puzzle += 1
+        flashable = np.where(puzzle == 10)
 
+        while len(flashable[0]) > 0:
+            for i in range(0, len(flashable[0])):
+                puzzle[(flashable[0][i] - 1):(flashable[0][i] + 2), (flashable[1][i] - 1):(flashable[1][i] + 2)] += 1
+                puzzle[flashable[0][i], flashable[1][i]] = -2000000
+                flashes += 1
+            flashable = np.where(puzzle > 9)
 
-    pass
+        puzzle[puzzle < -1000000] = 0
+
+    return flashes
 
 
 def split_input(puzzle):
-    n = np.array([[int(char) for char in line] for line in puzzle.split("\n")])
-    return n
+    lines = puzzle.split("\n")
+
+    frame = np.zeros((len(lines) + 2, len(lines[0]) + 2), dtype=int) - 1000000
+    frame[1:-1, 1:-1] = 1
+    input_values = np.array([[int(char) for char in line] for line in lines])
+
+    x = 1
+    y = 1
+
+    frame[x:x + input_values.shape[0], y:y + input_values.shape[1]] = input_values
+
+    return frame
 
 
 def main():
