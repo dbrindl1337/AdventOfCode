@@ -1,5 +1,6 @@
 from ..solution import part_a as a
 from ..solution import part_b as b
+from ..solution import part_b_rec_working as c
 
 input_a = """NNCB
 
@@ -29,6 +30,14 @@ def test_correct_example_solution_part_a():
 
 def test_correct_example_solution_part_b():
     assert b.return_solution(b.split_input(input_b), 40) == 2188189693529
+
+
+def test_correct_example_solution_part_c():
+    assert c.return_solution(c.split_input(input_b), 40) == 2188189693529
+
+
+def test_correct_example_solution_part_c_1():
+    assert c.return_solution(c.split_input(input_b), 10) == 1588
 
 
 def test_correct_example_solution_part_b_1():
