@@ -5,14 +5,12 @@ from aocd import submit
 
 
 def calc_new_polymer(polymer, rules):
-
+    pass
 
 
 def return_solution(instructions, iteration_count):
     polymer = instructions[0]
     rules = instructions[1]
-
-
 
 
 def split_input(puzzle):

@@ -15,7 +15,7 @@ windows_style_newline = "\r\n"
 unix_style_newline = "\n"
 
 # manually override these:
-day = 14
+day = now.day
 preprocess_solution_str = get_solution_split_by_lines
 
 src = 'day_template'
