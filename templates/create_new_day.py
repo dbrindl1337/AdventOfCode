@@ -74,7 +74,7 @@ def populate_test_template():
     f = open(f"{dest}/tests/tests.py", "w")
     f.write(get_test_template())
     f.close()
-    os.rename(f"{dest}/tests/tests.py", f"{dest}/tests/tests_day{day}.py")
+    os.rename(f"{dest}/tests/tests.py", f"{dest}/tests/tests_day{day}_{year}.py")
 
 
 def main():
