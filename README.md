@@ -1,1 +1,4 @@
-# AdventOfCode2020
+# AdventOfCode
+
+Note bene for me:
+Install pytest _first_ when cloning this project
