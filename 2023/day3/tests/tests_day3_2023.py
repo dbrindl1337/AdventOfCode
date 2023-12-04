@@ -20,4 +20,4 @@ def test_correct_example_solution_part_a():
 
 
 def test_correct_example_solution_part_b():
-    assert b.return_solution(b.split_input(input_b)) == 0  # replace me
+    assert b.return_solution(b.split_input(input_b)) == 467835

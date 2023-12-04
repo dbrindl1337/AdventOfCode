@@ -12,14 +12,15 @@ def get_8_kernel():
     return [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 
-def get_neighbor_number_positions(position, engine):
-    positions = []
+def exclude(position, engine):
     for k in get_8_kernel():
         x = position[0] + k[0]
         y = position[1] + k[1]
-        if engine[x][y].isnumeric():
-            positions.append((x, y))
-    return positions
+        if x < 0 or y < 0 or x > len(engine) - 1 or y > len(engine[0]) - 1:
+            continue
+        if not engine[x][y].isnumeric() and engine[x][y] != ".":
+            return True
+    return False
 
 
 def return_solution(numbers):
@@ -27,23 +28,18 @@ def return_solution(numbers):
     number_map = {}
     part_indicator_map = {}
     parts = set()
+    sum_numbers = 0
 
     for row, line in enumerate(numbers):
         numbers = re.finditer(r'\d+', line)
         part_indicators = re.finditer(r'[^0-9.]', line)
         for number in numbers:
+            include = False
             for i in range(number.span()[0], number.span()[1]):
-                number_map[(row, i)] = int(number.group())
-        for part_indicator in part_indicators:
-            for i in range(part_indicator.span()[0], part_indicator.span()[1]):
-                part_indicator_map[(row, i)] = part_indicator.group()
-
-    for part_indicator in part_indicator_map:
-        part_numbers = get_neighbor_number_positions(part_indicator, engine)
-        for part_number in part_numbers:
-            parts.add(number_map[part_number])
-
-    return sum(parts)
+                include = include or exclude((row, i), engine)
+            if include:
+                sum_numbers += int(number.group())
+    return sum_numbers
 
 
 def split_input(puzzle):
